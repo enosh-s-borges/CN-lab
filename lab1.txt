@@ -1,0 +1,144 @@
+A. Use appropriate tool to find Host name, IP address, physical address, subnet mask, default gateway etc [hint: Ipconfig]. 
+Explore different options available with the tool.
+
+B. On the host system, identify the TCP connections, ports on which the computer is listening, Ethernet statistics, the IP routing table,
+IPV4statistics, and IPV4 statistics etc. using appropriate tool [hint:netstat]. Explore different options available with the tool.
+
+-> A. To find the Host name, IP address, physical address, subnet mask, default gateway, and other network information, you can use Terminal (Linux/Mac). Here are the steps:
+1. Open the Terminal application.
+2. Type the command for:
+
+| Information                   | Command      |
+| ----------------------------- | ------------ |
+| **Host name**                 | `hostname`   |
+| **IP address**                | `ip -4 addr` |
+| **Physical (MAC) address**    | `ip link`    |
+| **Subnet mask**               | `ip -4 addr` |
+| **Default gateway**           | `ip route`   |
+| **Other network information** | `ip addr`    |
+
+# Output:-
+
+~/Projects ❯ hostname
+Borges
+
+~/Projects ❯ ip -4 addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+2: enp3s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    altname enx04bf1bb5f857
+    inet 192.168.31.84/24 brd 192.168.31.255 scope global dynamic noprefixroute enp3s0
+       valid_lft 26606sec preferred_lft 26606sec
+
+~/Projects ❯ ip link
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+2: enp3s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP mode DEFAULT group default qlen 1000
+    link/ether 04:bf:1b:b5:f8:57 brd ff:ff:ff:ff:ff:ff
+    altname enx04bf1bb5f857
+3: wlp0s20f3: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN mode DORMANT group default qlen 1000
+    link/ether 8a:60:b8:49:db:86 brd ff:ff:ff:ff:ff:ff permaddr 60:45:2e:7b:af:ca
+    altname wlx60452e7bafca
+
+~/Projects ❯ ip route
+default via 192.168.31.1 dev enp3s0 proto dhcp src 192.168.31.84 metric 100 
+192.168.31.0/24 dev enp3s0 proto kernel scope link src 192.168.31.84 metric 100 
+
+~/Projects ❯ ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host noprefixroute 
+       valid_lft forever preferred_lft forever
+2: enp3s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 04:bf:1b:b5:f8:57 brd ff:ff:ff:ff:ff:ff
+    altname enx04bf1bb5f857
+    inet 192.168.31.84/24 brd 192.168.31.255 scope global dynamic noprefixroute enp3s0
+       valid_lft 26543sec preferred_lft 26543sec
+    inet6 2409:40f2:209c:1ff5:a827:c4af:ee32:8625/64 scope global dynamic noprefixroute 
+       valid_lft 12609sec preferred_lft 12609sec
+    inet6 fe80::2f31:c644:c598:5d8c/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+3: wlp0s20f3: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default qlen 1000
+    link/ether 8a:60:b8:49:db:86 brd ff:ff:ff:ff:ff:ff permaddr 60:45:2e:7b:af:ca
+    altname wlx60452e7bafca
+
+-> B. To identify TCP connections, listening ports, Ethernet statistics, the IP routing table, and IPv4 statistics, you can use the `ss` command for modern Linux systems. Here are the steps:
+1. Open the Terminal application.
+
+| Requirement             | Command         | What it shows                |
+| ----------------------- | ------------    | ---------------------------- |
+| **TCP connections**     | `ss -t`         | Active TCP connections       |    [Note: use `ss -tun` to include UDP connections as well]
+| **Listening ports**     | `ss -tuln`      | TCP/UDP listening ports      |
+| **Ethernet statistics** | `ip -s link`    | RX/TX packets, errors, drops |
+| **IP routing table**    | `ip route`      | Routing table                |
+| **IPv4 statistics**     | `ip -s -4 addr` | IPv4 network statistics      |
+
+# Output:-
+
+~/Projects ❯ ss -tun
+Netid    State    Recv-Q     Send-Q                                     Local Address:Port                                    Peer Address:Port    
+udp      ESTAB    0          0                                   192.168.31.84%enp3s0:68                                      192.168.31.1:67      
+tcp      ESTAB    0          0                                          192.168.31.84:41032                                      13.67.9.5:443     
+tcp      ESTAB    0          0                                          192.168.31.84:58370                                  34.107.243.93:443     
+tcp      ESTAB    0          0                                          192.168.31.84:49276                                  140.82.112.22:443     
+tcp      ESTAB    0          0                                          192.168.31.84:43682                                  20.250.119.64:443     
+tcp      ESTAB    0          0                                          192.168.31.84:42938                                        1.1.1.1:853     
+tcp      ESTAB    0          0                                          192.168.31.84:50980                                 52.168.117.170:443     
+tcp      ESTAB    0          0                                          192.168.31.84:40872                                  57.144.169.32:443     
+tcp      ESTAB    0          0                                          192.168.31.84:37690                                    23.23.42.90:8882    
+tcp      ESTAB    0          0              [2409:40f2:209c:1ff5:a827:c4af:ee32:8625]:60494                             [2603:1061:10::16]:443     
+tcp      ESTAB    0          0              [2409:40f2:209c:1ff5:a827:c4af:ee32:8625]:51326                            [2a04:4e42:25::347]:443     
+tcp      ESTAB    0          0              [2409:40f2:209c:1ff5:a827:c4af:ee32:8625]:51338                            [2a04:4e42:25::347]:443     
+tcp      ESTAB    0          0              [2409:40f2:209c:1ff5:a827:c4af:ee32:8625]:51342                            [2a04:4e42:25::347]:443     
+tcp      ESTAB    0          0              [2409:40f2:209c:1ff5:a827:c4af:ee32:8625]:48868         [2606:4700:83b2:4bd2:72dd:0:5085:569a]:443     
+tcp      ESTAB    0          0              [2409:40f2:209c:1ff5:a827:c4af:ee32:8625]:54340                            [2a04:4e42:92::347]:443     
+tcp      ESTAB    0          0              [2409:40f2:209c:1ff5:a827:c4af:ee32:8625]:54352                            [2a04:4e42:92::347]:443     
+tcp      ESTAB    0          0              [2409:40f2:209c:1ff5:a827:c4af:ee32:8625]:56616                            [2a04:4e42:8e::347]:443     
+tcp      ESTAB    0          0              [2409:40f2:209c:1ff5:a827:c4af:ee32:8625]:45998         [2606:4700:83b2:7dba:73dd:0:5ff2:75c4]:443     
+tcp      ESTAB    0          0              [2409:40f2:209c:1ff5:a827:c4af:ee32:8625]:55028                               [2a04:4e42::347]:443     
+
+~/Projects ❯ ip -s link
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    RX:  bytes packets errors dropped  missed   mcast           
+        167455    1786      0       0       0       0 
+    TX:  bytes packets errors dropped carrier collsns           
+        167455    1786      0       0       0       0 
+2: enp3s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP mode DEFAULT group default qlen 1000
+    link/ether 04:bf:1b:b5:f8:57 brd ff:ff:ff:ff:ff:ff
+    RX:  bytes packets errors dropped  missed   mcast           
+     416694275  384679      0      18     541    4332 
+    TX:  bytes packets errors dropped carrier collsns           
+      77277143  168463      0       2       0       0 
+    altname enx04bf1bb5f857
+3: wlp0s20f3: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN mode DORMANT group default qlen 1000
+    link/ether 86:37:4d:17:58:b0 brd ff:ff:ff:ff:ff:ff permaddr 60:45:2e:7b:af:ca
+    RX:  bytes packets errors dropped  missed   mcast           
+             0       0      0       0       0       0 
+    TX:  bytes packets errors dropped carrier collsns           
+             0       0      0       0       0       0 
+    altname wlx60452e7bafca
+
+~/Projects ❯ ip route
+default via 192.168.31.1 dev enp3s0 proto dhcp src 192.168.31.84 metric 100 
+192.168.31.0/24 dev enp3s0 proto kernel scope link src 192.168.31.84 metric 100 
+
+~/Projects ❯ ip -s -4 addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    RX:  bytes packets errors dropped  missed   mcast           
+        167455    1786      0       0       0       0 
+    TX:  bytes packets errors dropped carrier collsns           
+        167455    1786      0       0       0       0 
+2: enp3s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    altname enx04bf1bb5f857
+    inet 192.168.31.84/24 brd 192.168.31.255 scope global dynamic noprefixroute enp3s0
+       valid_lft 28065sec preferred_lft 28065sec
+    RX:  bytes packets errors dropped  missed   mcast           
+     416859263  385452      0      18     541    4377 
+    TX:  bytes packets errors dropped carrier collsns           
+      77859247  169182      0       2       0       0 
