@@ -34,12 +34,6 @@ string encode(string data, string key) {
     return data + rem;
 }
 
-// Decode: returns true if error is present
-bool decode(string encodedData, string key) {
-    string rem = divide(encodedData, key);
-    return rem.find('1') != string::npos;         // true if any '1' found
-}
-
 int main() {
     string key, data, encoded;
 
@@ -51,13 +45,19 @@ int main() {
 
     // Encoding
     encoded = encode(data, key);
+    string zeros(key.length() - 1, '0');
+    string remainder = divide(data + zeros, key);
+    cout << "Remainder : " << remainder << endl;
     cout << "Encoded data : " << encoded << endl;
 
     // Decoding / Error checking
     cout << "Enter binary encoded data : ";
     cin >> encoded;
 
-    if (decode(encoded, key))
+    remainder = divide(encoded, key);
+    cout << "Received remainder : " << remainder << endl;
+
+    if (remainder.find('1') != string::npos)
         cout << "Error in the data" << endl;
     else
         cout << "Data is error free" << endl;
