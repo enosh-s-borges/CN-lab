@@ -1,0 +1,16 @@
+Enter binary key : 1011
+Enter binary data : 1001110
+Remainder : 000
+Encoded data : 1001110000
+Enter binary encoded data : 1001110000
+Received remainder : 000
+Data is error free
+
+
+Enter binary key : 1011
+Enter binary data : 1001110
+Remainder : 000
+Encoded data : 1001110000
+Enter binary encoded data : 1001010000
+Received remainder : 111
+Error in the data
