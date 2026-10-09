@@ -1,0 +1,20 @@
+Enter the number of frames: 4
+Enter the frame details:
+
+Enter frame number: 4
+Enter frame content: 123
+
+Enter frame number: 1
+Enter frame content: 456
+
+Enter frame number: 3
+Enter frame content: 789
+
+Enter frame number: 2
+Enter frame content: 1010
+
+Before Sorting (Shuffled frames):
+123 789 1010 456 
+
+After Sorting the frames:
+456 1010 789 123
