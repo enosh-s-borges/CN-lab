@@ -1,0 +1,53 @@
+# i) All positive edges
+Enter the number of vertices: 4                  
+Enter the number of edges: 5
+Enter edges details (source, destination, weight):
+0 1 4 
+0 2 5
+1 2 2
+1 3 6 
+2 3 3 
+Enter the source vertex: 0
+
+Vertex Distance from Source (0):
+Vertex  Distance
+0       0
+1       4
+2       5
+3       8
+
+# ii) All negative edges
+Enter the number of vertices: 4
+Enter the number of edges: 5
+Enter edges details (source, destination, weight):
+0 1 -2
+0 2 -4
+1 2 -1
+1 3 -3
+2 3 -2
+Enter the source vertex: 0
+
+Vertex Distance from Source (0):
+Vertex  Distance
+0       0
+1       -2
+2       -4
+3       -6
+
+# iii) Mixed edges
+Enter the number of vertices: 4
+Enter the number of edges: 5
+Enter edges details (source, destination, weight):
+0 1 4
+0 2 5
+1 2 -3
+1 3 6
+2 3 2
+Enter the source vertex: 0
+
+Vertex Distance from Source (0):
+Vertex  Distance
+0       0
+1       4
+2       1
+3       3
