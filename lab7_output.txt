@@ -1,0 +1,8 @@
+Prime number p is 61
+Prime number q is 53
+Public key is 17
+Private key is 2753
+Enter the plain text: Computer Networks
+Encrypting string: Computer Networks
+Encrypted message: 641 2185 2271 612 2160 884 1313 2412 1992 3165 1313 884 1107 2185 2412 690 1230 
+Decrypted string: Computer Networks

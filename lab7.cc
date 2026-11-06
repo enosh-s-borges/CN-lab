@@ -23,8 +23,8 @@ class RSA {
 public:
     RSA() {
         // reasonably large primes that fit in long long
-        p = 10007;
-        q = 10009;
+        p = 61;
+        q = 53;
         cout << "Prime number p is " << p << endl;
         cout << "Prime number q is " << q << endl;
 
