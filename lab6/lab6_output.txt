@@ -1,0 +1,12 @@
+CN-lab/lab6 master ? ❯ ./server
+Waiting for client...
+Client connected! Type messages below:
+Computer Networks
+UDP socket programming
+Message passing using UDP
+
+CN-lab/lab6 master ? ❯ ./client 
+Waiting for server messages...
+Server says: Computer Networks
+Server says: UDP socket programming
+Server says: Message passing using UDP

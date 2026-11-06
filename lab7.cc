@@ -2,8 +2,8 @@
 data*/
 
 #include <iostream>
-#include <cstdlib>
-#include <ctime>
+#include <string>
+#include <vector>
 #include <algorithm>
 using namespace std;
 
@@ -22,37 +22,57 @@ class RSA {
     long long p, q, N, phi, e, d;
 public:
     RSA() {
-        srand(time(0));
-        // small primes for lab (instead of 1024-bit)
-        p = 61; q = 53;
+        // reasonably large primes that fit in long long
+        p = 10007;
+        q = 10009;
         cout << "Prime number p is " << p << endl;
         cout << "Prime number q is " << q << endl;
+
         N = p * q;
         phi = (p - 1) * (q - 1);
+
         e = 17;
         while (__gcd(e, phi) != 1) e++;
         cout << "Public key is " << e << endl;
+
         for (d = 1; d < phi; d++)
             if ((e * d) % phi == 1) break;
         cout << "Private key is " << d << endl;
     }
-    long long encrypt(long long msg) {
-        return modPow(msg, e, N);
+
+    vector<long long> encrypt(string msg) {
+        vector<long long> enc;
+        for (char c : msg)
+            enc.push_back(modPow((long long)c, e, N));
+        return enc;
     }
-    long long decrypt(long long msg) {
-        return modPow(msg, d, N);
+
+    string decrypt(vector<long long> enc) {
+        string dec = "";
+        for (long long val : enc)
+            dec += (char)modPow(val, d, N);
+        return dec;
     }
 };
 
 int main() {
     RSA rsa;
-    long long msg;
-    cout << "Enter the plain text (number): ";
-    cin >> msg;
-    cout << "Encrypting: " << msg << endl;
-    long long enc = rsa.encrypt(msg);
-    cout << "Encrypted: " << enc << endl;
-    long long dec = rsa.decrypt(enc);
-    cout << "Decrypted: " << dec << endl;
+    string text;
+
+    cout << "Enter the plain text: ";
+    getline(cin, text);
+
+    cout << "Encrypting string: " << text << endl;
+
+    vector<long long> encrypted = rsa.encrypt(text);
+
+    cout << "Encrypted message: ";
+    for (long long val : encrypted)
+        cout << val << " ";
+    cout << endl;
+
+    string decrypted = rsa.decrypt(encrypted);
+    cout << "Decrypted string: " << decrypted << endl;
+
     return 0;
 }
