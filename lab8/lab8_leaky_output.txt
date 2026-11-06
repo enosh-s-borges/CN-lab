@@ -1,0 +1,13 @@
+Enter the bucket capacity
+6
+Enter the bucket rate (Rate at which the bucket sends the packets)
+2
+Enter the number of packets to be sent
+4
+Enter the packets sizes one by one
+2 3 4 6
+Time_t          P_size          accepted        sent    remaining
+1               2               2               2               0
+2               3               3               2               1
+3               4               4               2               3
+4               6               dropped         2               1
