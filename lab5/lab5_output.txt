@@ -1,0 +1,22 @@
+//Test case 1
+CN-lab/lab5 master  ? ❯ ./server 
+Waiting for client...
+
+CN-lab/lab5 master  ? ❯ ./client 
+Enter file name: sample
+
+File contents:
+File not found
+
+//Test case 2
+CN-lab/lab5 master  ? ✗ ./server 
+Waiting for client...
+
+CN-lab/lab5 master  ? ❯ ./client 
+Enter file name: sample.txt
+
+File contents:
+Computer Networks
+TCP/IP Socket Programming
+Client Server Communication
+File Transfer using TCP
