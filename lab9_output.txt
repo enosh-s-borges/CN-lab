@@ -1,0 +1,35 @@
+Enter the maximum number of packets:
+25 
+Enter the queue size:
+10
+Enter the maximum probability:
+0.8
+Enter the minimum probability:
+0.4
+Enter the threshold value:
+5
+Packet accepted 1
+Packet accepted 2
+Packet accepted 3
+Packet accepted 4
+Packet accepted 5
+Packet accepted 6
+Packet dropped (CONGESTION AVOIDANCE)
+Packet accepted 8
+Packet accepted 9
+Packet accepted 10
+Packet accepted 11
+Packet dropped (CONGESTION AVOIDANCE)
+Packet dropped (CONGESTION AVOIDANCE)
+Packet dropped (CONGESTION AVOIDANCE)
+Packet dropped (CONGESTION AVOIDANCE)
+Packet dropped (CONGESTION AVOIDANCE)
+Packet dropped (CONGESTION AVOIDANCE)
+Packet dropped (CONGESTION AVOIDANCE)
+Packet accepted 19
+Packet dropped (CONGESTION AVOIDANCE)
+Packet dropped (CONGESTION AVOIDANCE)
+Packet accepted 22
+Packet dropped (CONGESTION AVOIDANCE)
+Packet dropped (CONGESTION AVOIDANCE)
+Packet dropped (CONGESTION AVOIDANCE)
